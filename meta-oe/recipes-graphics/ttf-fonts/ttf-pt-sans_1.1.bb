@@ -26,12 +26,8 @@ do_install () {
 
 FILES:${PN} += "${datadir}"
 
-pkg_postisnt_ontarget:${PN} () {
+pkg_postisnt:${PN} () {
     set -x
-    for fontdir in `find $D/usr/lib/X11/fonts -type d`; do
-        mkfontdir $fontdir
-        mkfontscale $fontdir
-    done
     for fontdir in `find $D/usr/share/fonts/X11 -type d`; do
         mkfontdir $fontdir
         mkfontscale $fontdir
